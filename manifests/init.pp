@@ -38,5 +38,5 @@
 class test-nginx {
 
 include test-nginx::install
-
+include test-nginx::config
 }
