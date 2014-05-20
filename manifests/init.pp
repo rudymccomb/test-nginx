@@ -1,4 +1,4 @@
-# == Class: nginx
+# == Class: test-nginx
 #
 # Full description of class nginx here.
 #
@@ -23,7 +23,7 @@
 #
 # === Examples
 #
-#  class { nginx:
+#  class { test-nginx:
 #    servers => [ 'pool.ntp.org', 'ntp.local.company.com' ],
 #  }
 #
@@ -35,7 +35,7 @@
 #
 # Copyright 2014 Your name here, unless otherwise noted.
 #
-class nginx {
+class test-nginx {
 
 include test-nginx::install
 
