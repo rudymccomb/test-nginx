@@ -39,4 +39,7 @@ class test-nginx {
 
 include test-nginx::install
 include test-nginx::config
+include test-nginx::sites
+include test-nginx::firewall
+
 }
