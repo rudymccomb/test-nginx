@@ -7,14 +7,9 @@ file { "/etc/nginx/sites-enabled/default":
 }
 
 file { "/etc/nginx/sites-available/test-nginx":
+    source => "puppet:///modules/test-nginx/test-nginx-sites",
     require => [ Package["nginx"], File["/var/www"]]
     ensure => "file",
-    content =>
-        "server {
-            listen 80 default_server;
-            server_name _;
-            location / { root /var/www; }
-        }",
     notify => Service["nginx"]
 }
 file { "/etc/nginx/sites-enabled/test-nginx":
