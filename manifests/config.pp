@@ -3,13 +3,27 @@ class test-nginx::config {
 file { "/var/www":
     ensure => "directory"
 }
-file { "/var/www/index.html":
-    require => File["/www"],
-    ensure => "file",
-    content => "<!DOCTYPE html>
-        <html><body>
-        Hello, world.
-        "
+case $::osfamily {
+   'debian': {
+	
+	file { "/var/www/index.html":
+    	   source => "puppet:///modules/test-nginx/index.html",
+           require => File["/var/www"],
+           owner => www-data,
+           ensure => "file",
+        }
+   }
+ 
+   'redhat': {
+
+        file { "/var/www/index.html":
+           source => "puppet:///modules/test-nginx/index.html",
+           require => File["/var/www"],
+           owner => apache,
+           ensure => "file",
+        }
+   }  
+
 }
 
 }
